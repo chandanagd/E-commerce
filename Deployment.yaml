@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e-commerce-deployment
+  namespace: e-commerce-app-database
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: e-commerce
+  template:
+    metadata:
+      labels:
+        app: e-commerce
+    spec:
+      containers:
+      - name: e-commerce-container
+        image: 901953/e-commerce-app:app
+        ports:
+        - containerPort: 80
